@@ -12,6 +12,7 @@
     </parent>
 
     <modules>
+        <module>order</module>
 
     </modules>
 
