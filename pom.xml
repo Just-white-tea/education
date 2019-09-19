@@ -12,7 +12,7 @@
     </parent>
 
     <modules>
-
+        <module>page</module>
     </modules>
 
     <!-- 多模块+继承-->
