@@ -8,7 +8,6 @@
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.vip</groupId>
     <artifactId>account</artifactId>
     <version>1.0.0</version>
     <name>account</name>

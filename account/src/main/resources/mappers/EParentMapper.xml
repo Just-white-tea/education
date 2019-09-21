@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vip.account.mapper.EParentMapper">
+  <resultMap id="BaseParentMap" type="com.vip.account.domain.entity.EParent">
+    <!--@mbg.generated-->
+    <id column="e_parent_id" jdbcType="INTEGER" property="eParentId" />
+    <result column="e_parent_name" jdbcType="VARCHAR" property="eParentName" />
+    <result column="e_parent_password" jdbcType="VARCHAR" property="eParentPassword" />
+    <result column="e_parent_phone" jdbcType="VARCHAR" property="eParentPhone" />
+    <result column="ep_is_delete" jdbcType="INTEGER" property="epIsDelete" />
+  </resultMap>
+
+  <select id="selectParent" resultMap="BaseParentMap">
+      SELECT * FROM e_parent
+      WHERE 1=1
+        <if test="eParent.eParentId != null">
+          AND e_parent_id = #{eParent.eParentId}
+        </if>
+        <if test="eParent.eParentName != null">
+          AND e_parent_name = #{eParent.eParentName}
+        </if>
+
+  </select>
+
+
+  <insert id="insertParent">
+    INSERT INTO e_parent
+    (e_parent_name, e_parent_password, e_parent_phone)
+    VALUES
+    (#{eParent.eParentName}, #{eParent.eParentPassword}, #{eParent.eParentPhone})
+  </insert>
+
+  <update id="updatePassword">
+    UPDATE e_parent
+    SET e_parent_password=#{eParent.eParentPassword}
+    WHERE e_parent_id = #{eParent.eParentId}
+  </update>
+</mapper>

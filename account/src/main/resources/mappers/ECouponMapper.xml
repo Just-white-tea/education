@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vip.account.mapper.ECouponMapper">
+  <resultMap id="BaseResultMap" type="com.vip.account.domain.entity.ECoupon">
+    <!--@mbg.generated-->
+    <id column="e_coupon_id" jdbcType="INTEGER" property="eCouponId" />
+    <result column="e_coupon_price" jdbcType="DOUBLE" property="eCouponPrice" />
+    <result column="e_parent_id" jdbcType="INTEGER" property="eParentId" />
+    <result column="eco_is_delete" jdbcType="INTEGER" property="ecoIsDelete" />
+  </resultMap>
+    <select id="selectCoupon" resultMap="BaseResultMap">
+      SELECT * FROM e_coupon
+      WHERE e_parent_id=#{parentId}
+      AND eco_is_delete=0
+    </select>
+  <update id="useCoupon">
+    UPDATE e_coupon
+    SET eco_is_delete=1
+    WHERE e_coupon_id=#{couponId}
+  </update>
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vip.account.mapper.EStudentMapper">
+  <resultMap id="BaseStudentMap" type="com.vip.account.domain.entity.EStudent">
+    <!--@mbg.generated-->
+    <id column="e_student_id" jdbcType="INTEGER" property="eStudentId" />
+    <result column="e_student_name" jdbcType="VARCHAR" property="eStudentName" />
+    <result column="e_student_grade" jdbcType="VARCHAR" property="eStudentGrade" />
+    <result column="es_is_delete" jdbcType="INTEGER" property="esIsDelete" />
+    <result column="e_parent_id" jdbcType="INTEGER" property="eParentId" />
+  </resultMap>
+    <select id="selectStudent" resultMap="BaseStudentMap">
+      SELECT * FROM e_student
+      WHERE es_is_delete=0
+      <if test="student.eParentId != null">
+        AND e_parent_id=#{student.eParentId}
+      </if>
+      <if test="student.eStudentId != null">
+        AND e_student_id=#{student.eStudentId}
+      </if>
+      <if test="student.eStudentName != null">
+        AND e_student_name=#{student.eStudentName}
+      </if>
+    </select>
+  <update id="deleteStudent">
+    UPDATE e_student SET es_is_delete=1
+    WHERE e_student_id=#{eStudentId} AND es_is_delete=0
+  </update>
+  <insert id="insertStudent">
+    INSERT INTO e_student
+        (e_student_name, e_student_grade, e_parent_id)
+        VALUES (#{student.eStudentName},#{student.eStudentGrade},#{student.eParentId})
+  </insert>
+
+</mapper>
