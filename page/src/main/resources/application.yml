@@ -1,60 +1,49 @@
+
 spring:
+
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-
-    dynamic:
-      datasource:
-        master:
-          username: root
-          password: root
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://47.100.93.52:3335/boot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-        slave:
-          one:
-            username: root
-            password: root
-            driver-class-name: com.mysql.cj.jdbc.Driver
-            url: jdbc:mysql://47.100.93.52:3336/boot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: 123456
-      url: jdbc:mysql://localhost:3306/boot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-
-      # druid ÅäÖÃ
+      url: jdbc:mysql://localhost:3306/education_page?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      # druid é…ç½®
       initial-size: 5
       max-active: 50
       min-idle: 3
-#      ÅäÖÃ¼à¿ØÍ³¼ÆÀ¹½ØÆ÷ ÈÕÖ¾ÅäÖÃ  Slf4j  logback
-#      stat ¼à¿ØÊı¾İ¿âĞÔÄÜ
-#      wall  ÓÃÓÚ·À»ğÇ½
-#      ÈÕÖ¾ÏÈ¹Ø slf4j  logback  log4j  log4j2
+#      é…ç½®ç›‘æ§ç»Ÿè®¡æ‹¦æˆªå™¨ æ—¥å¿—é…ç½®  Slf4j  logback
+#      stat ç›‘æ§æ•°æ®åº“æ€§èƒ½
+#      wall  ç”¨äºé˜²ç«å¢™
+#      æ—¥å¿—å…ˆå…³ slf4j  logback  log4j  log4j2
       filter: stat,wall,slf4j
       web-stat-filter:
         enabled: true
         log-slow-sql: true
         url-pattern:  /*
-        # ÅÅ³ı²»À¹½ØµÄ ÇëÇó
+        # æ’é™¤ä¸æ‹¦æˆªçš„ è¯·æ±‚
         exclusions: "*.js,*.png,/druid/*"
       stat-view-servlet:
         enabled: true
         url-pattern: /druid/*
-        #  ÊÇ·ñ¿ÉÒÔÊ¹ÓÃÖØÖÃ¹¦ÄÜ
+        #  æ˜¯å¦å¯ä»¥ä½¿ç”¨é‡ç½®åŠŸèƒ½
         reset-enable: true
         login-username: admin
         login-password: admin
-        #  ÔÊĞí·ÃÎÊµÄid
+        #  å…è®¸è®¿é—®çš„id
         allow: 127.0.0.1
-        #  ºÍÃûµ¥
+        #  å’Œåå•
         deny: ""
-#  mybatisÕûºÏ
+#  mybatisæ•´åˆ
 
-mybatis:
-  # ±ğÃû
-  type-aliases-package:  com.vip.demo.domain.entity
+mybatis-plus:
+  # åˆ«å
+  type-aliases-package:  com.vip.page.domain.entity
   configuration:
     map-underscore-to-camel-case: true
+  mapper-locations: classpath:mappers/**/*.xml
+
 
 logging:
   level:
