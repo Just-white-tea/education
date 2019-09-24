@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vip.order.mapper.ETeacherMapper">
+  <resultMap id="BaseResultMap" type="com.vip.order.domain.entity.ETeacher">
+    <!--@mbg.generated-->
+    <id column="e_teacher_id" jdbcType="INTEGER" property="eTeacherId" />
+    <result column="e_teacher_name" jdbcType="VARCHAR" property="eTeacherName" />
+    <result column="e_teacher_password" jdbcType="VARCHAR" property="eTeacherPassword" />
+    <result column="et_is_delete" jdbcType="VARCHAR" property="etIsDelete" />
+    <result column="e_campus_id" jdbcType="INTEGER" property="eCampusId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    e_teacher_id, e_teacher_name, e_teacher_password, et_is_delete, e_campus_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from e_teacher
+    where e_teacher_id = #{eTeacherId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from e_teacher
+    where e_teacher_id = #{eTeacherId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="e_teacher_id" keyProperty="eTeacherId" parameterType="com.vip.order.domain.entity.ETeacher" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into e_teacher (e_teacher_name, e_teacher_password, et_is_delete, 
+      e_campus_id)
+    values (#{eTeacherName,jdbcType=VARCHAR}, #{eTeacherPassword,jdbcType=VARCHAR}, #{etIsDelete,jdbcType=VARCHAR}, 
+      #{eCampusId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="e_teacher_id" keyProperty="eTeacherId" parameterType="com.vip.order.domain.entity.ETeacher" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into e_teacher
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eTeacherName != null">
+        e_teacher_name,
+      </if>
+      <if test="eTeacherPassword != null">
+        e_teacher_password,
+      </if>
+      <if test="etIsDelete != null">
+        et_is_delete,
+      </if>
+      <if test="eCampusId != null">
+        e_campus_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eTeacherName != null">
+        #{eTeacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="eTeacherPassword != null">
+        #{eTeacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="etIsDelete != null">
+        #{etIsDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="eCampusId != null">
+        #{eCampusId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vip.order.domain.entity.ETeacher">
+    <!--@mbg.generated-->
+    update e_teacher
+    <set>
+      <if test="eTeacherName != null">
+        e_teacher_name = #{eTeacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="eTeacherPassword != null">
+        e_teacher_password = #{eTeacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="etIsDelete != null">
+        et_is_delete = #{etIsDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="eCampusId != null">
+        e_campus_id = #{eCampusId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where e_teacher_id = #{eTeacherId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vip.order.domain.entity.ETeacher">
+    <!--@mbg.generated-->
+    update e_teacher
+    set e_teacher_name = #{eTeacherName,jdbcType=VARCHAR},
+      e_teacher_password = #{eTeacherPassword,jdbcType=VARCHAR},
+      et_is_delete = #{etIsDelete,jdbcType=VARCHAR},
+      e_campus_id = #{eCampusId,jdbcType=INTEGER}
+    where e_teacher_id = #{eTeacherId,jdbcType=INTEGER}
+  </update>
+</mapper>

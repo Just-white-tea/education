@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MyBatisCodeHelperDatasource">
+    <option name="projectProfile">
+      <ProjectProfile>
+        <option name="javaMapperPackage" value="com.vip.order.mapper" />
+        <option name="javaMapperPath" value="$PROJECT_DIR$/order/src/main/java" />
+        <option name="javaModelPackage" value="com.vip.order.domain.entity" />
+        <option name="javaModelPath" value="$PROJECT_DIR$/order/src/main/java" />
+        <option name="lastDatabaseCrudChooseModuleName" value="order" />
+        <option name="moduleNameToPackageAndPathMap">
+          <map>
+            <entry key="education">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.vip.order.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/src/main/java" />
+                  <option name="javaModelPacakge" value="com.vip.order.domain.entity" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/src/main/java" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/src/main/java" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/src/main/java" />
+                  <option name="xmlPackage" value="mappers" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+            <entry key="order">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.vip.order.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/order/src/main/java" />
+                  <option name="javaModelPacakge" value="com.vip.order.domain.entity" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/order/src/main/java" />
+                  <option name="xmlPackage" value="mappers" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/order/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="tableGenerateConfigs">
+          <map>
+            <entry key="education_order:e_order">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="e_order_id" />
+                  <option name="javaModelName" value="EOrder" />
+                  <option name="moduleName" value="order" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="education_order:e_order_list">
+              <value>
+                <TableGenerateConfig>
+                  <option name="javaModelName" value="EOrderList" />
+                  <option name="moduleName" value="order" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="education_order:e_teach_plan">
+              <value>
+                <TableGenerateConfig>
+                  <option name="javaModelName" value="ETeachPlan" />
+                  <option name="moduleName" value="order" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="education_order:e_teacher">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="e_teacher_id" />
+                  <option name="javaModelName" value="ETeacher" />
+                  <option name="moduleName" value="order" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="useLomBokOnModel" value="true" />
+        <option name="xmlMapperPackage" value="mappers" />
+        <option name="xmlMapperPath" value="$PROJECT_DIR$/order/src/main/resources" />
+      </ProjectProfile>
+    </option>
+  </component>
+</project>

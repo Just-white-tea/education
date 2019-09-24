@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vip.order.mapper.ETeachPlanMapper">
+  <resultMap id="BaseResultMap" type="com.vip.order.domain.entity.ETeachPlan">
+    <!--@mbg.generated-->
+    <id column="e_teacher_id" jdbcType="INTEGER" property="eTeacherId" />
+    <result column="e_course_id" jdbcType="INTEGER" property="eCourseId" />
+    <result column="etp_room" jdbcType="VARCHAR" property="etpRoom" />
+    <result column="etp_teach_time" jdbcType="VARCHAR" property="etpTeachTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    e_teacher_id, e_course_id, etp_room, etp_teach_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from e_teach_plan
+    where e_teacher_id = #{eTeacherId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from e_teach_plan
+    where e_teacher_id = #{eTeacherId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.vip.order.domain.entity.ETeachPlan">
+    <!--@mbg.generated-->
+    insert into e_teach_plan (e_teacher_id, e_course_id, etp_room, 
+      etp_teach_time)
+    values (#{eTeacherId,jdbcType=INTEGER}, #{eCourseId,jdbcType=INTEGER}, #{etpRoom,jdbcType=VARCHAR}, 
+      #{etpTeachTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vip.order.domain.entity.ETeachPlan">
+    <!--@mbg.generated-->
+    insert into e_teach_plan
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eTeacherId != null">
+        e_teacher_id,
+      </if>
+      <if test="eCourseId != null">
+        e_course_id,
+      </if>
+      <if test="etpRoom != null">
+        etp_room,
+      </if>
+      <if test="etpTeachTime != null">
+        etp_teach_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eTeacherId != null">
+        #{eTeacherId,jdbcType=INTEGER},
+      </if>
+      <if test="eCourseId != null">
+        #{eCourseId,jdbcType=INTEGER},
+      </if>
+      <if test="etpRoom != null">
+        #{etpRoom,jdbcType=VARCHAR},
+      </if>
+      <if test="etpTeachTime != null">
+        #{etpTeachTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vip.order.domain.entity.ETeachPlan">
+    <!--@mbg.generated-->
+    update e_teach_plan
+    <set>
+      <if test="eCourseId != null">
+        e_course_id = #{eCourseId,jdbcType=INTEGER},
+      </if>
+      <if test="etpRoom != null">
+        etp_room = #{etpRoom,jdbcType=VARCHAR},
+      </if>
+      <if test="etpTeachTime != null">
+        etp_teach_time = #{etpTeachTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where e_teacher_id = #{eTeacherId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vip.order.domain.entity.ETeachPlan">
+    <!--@mbg.generated-->
+    update e_teach_plan
+    set e_course_id = #{eCourseId,jdbcType=INTEGER},
+      etp_room = #{etpRoom,jdbcType=VARCHAR},
+      etp_teach_time = #{etpTeachTime,jdbcType=VARCHAR}
+    where e_teacher_id = #{eTeacherId,jdbcType=INTEGER}
+  </update>
+</mapper>

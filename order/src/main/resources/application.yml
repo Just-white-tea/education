@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    druid:
+      stat-view-servlet:
+        login-username: admin
+        login-password: admin
+        url-pattern: /druid/*
+        enabled: true
+        allow: 127.0.0.1
+    dynamic:
+      datasource:
+        master:
+          username: root
+          password: root
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://101.132.227.109:3316/education_order?characterEncoding=utf8&useSSL=false
+          slave:
+            one:
+              username: root
+              password: root
+              driver-class-name: com.mysql.jdbc.Driver
+              url: jdbc:mysql://101.132.227.109:3317/education_order?characterEncoding=utf8&useSSL=false
+            two:
+              username: root
+              password: root
+              driver-class-name: com.mysql.jdbc.Driver
+              url: jdbc:mysql://101.132.227.109:3318/education_order?characterEncoding=utf8&useSSL=false
+mybatis-plus:
+  mapper-locations: classpath:mappers/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+  type-aliases-package: com.vip.order.domain

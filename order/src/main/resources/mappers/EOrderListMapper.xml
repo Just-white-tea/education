@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vip.order.mapper.EOrderListMapper">
+  <resultMap id="EOrderList_ResultMap" type="com.vip.order.domain.entity.EOrderList">
+    <result column="e_order_id" jdbcType="INTEGER" property="eOrderId" />
+    <result column="e_student_id" jdbcType="INTEGER" property="eStudentId" />
+  </resultMap>
+  <insert id="addOrderStu">
+    insert into e_order_list(e_order_id, e_student_id) VALUES
+    <foreach collection="studentId" item="stu" close="" separator=",">
+      (#{orderId},#{stu})
+    </foreach>
+  </insert>
+
+</mapper>

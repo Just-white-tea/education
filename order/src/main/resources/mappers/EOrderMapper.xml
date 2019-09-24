@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vip.order.mapper.EOrderMapper">
+  <resultMap id="EOrder_ResultMap" type="EOrderVo">
+    <id column="e_order_id" jdbcType="INTEGER" property="eOrderId" />
+    <result column="e_teacher_id" jdbcType="INTEGER" property="eTeacherId" />
+    <result column="e_campus_id" jdbcType="INTEGER" property="eCampusId" />
+    <result column="e_parent_id" jdbcType="INTEGER" property="eParentId" />
+    <result column="e_order_price" jdbcType="DOUBLE" property="eOrderPrice" />
+    <result column="e_coupon_id" jdbcType="INTEGER" property="eCouponId" />
+    <result column="eo_state" jdbcType="INTEGER" property="eoState" />
+    <result column="e_course_id" jdbcType="INTEGER" property="eCourseId"/>
+    <collection property="eOrderList" resultMap="com.vip.order.mapper.EOrderListMapper.EOrderList_ResultMap">
+    </collection>
+  </resultMap>
+  <insert id="addEOrder" keyProperty="eOrder.eOrderId" useGeneratedKeys="true">
+    insert into e_order(e_campus_id,e_coupon_id,e_order_price,e_parent_id,e_teacher_id,e_course_id)
+     values
+    (#{eOrder.ECampusId},#{eOrder.ECouponId},#{eOrder.eOrderPrice},#{eOrder.EParentId},#{eOrder.ETeacherId},#{eOrder.ECourseId})
+  </insert>
+  <select id="queryOrder" resultMap="EOrder_ResultMap">
+    select eo.e_order_id,
+    eo.e_campus_id, eo.e_course_id, eo.e_parent_id, eo.e_order_price, eo.e_coupon_id,
+    et.e_teacher_name,eol.e_student_id
+    from e_order eo
+    left join e_order_list eol on eo.e_order_id = eol.e_order_id
+    left join e_teacher et on eo.e_teacher_id = et.e_teacher_id
+    where eo.eo_state=0 and et.et_is_delete=0 and eo.e_parent_id=#{parentId}
+
+  </select>
+
+</mapper>
